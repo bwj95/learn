@@ -314,7 +314,7 @@
                         <!-- Footer Info Notice inside Card -->
                         <div class="border-t border-clinical-800/80 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-clinical-500 font-mono gap-2">
                             <span>INDEX REFERENCE: LTS-<span id="display-id">N/A</span></span>
-                            <span class="text-danger-500/80">NO SAFE OR SAFE-USE DOSE EXISTS FOR THIS SUBSTANCE.</span>
+                            <span class="text-danger-500/80" id="display-dosage-warning">NO SAFE OR SAFE-USE DOSE EXISTS FOR THIS SUBSTANCE.</span>
                         </div>
                     </div>
                 </div>
@@ -1742,6 +1742,16 @@
                 profileDisplayCard.classList.add("pulse-warning");
                 profileDisplayCard.classList.remove("theme-green-pulse", "theme-green");
             }
+
+            // Update warning notice specifically for Cannabis
+            const warningEl = document.getElementById("display-dosage-warning");
+            if (id === "cannabis") {
+                warningEl.textContent = "CONSULT A CLINICAL PROFESSIONAL REGARDING THERAPEUTIC APPLICATIONS.";
+                warningEl.className = "text-green-500/80";
+            } else {
+                warningEl.textContent = "NO SAFE OR SAFE-USE DOSE EXISTS FOR THIS SUBSTANCE.";
+                warningEl.className = "text-danger-500/80";
+            }
             
             // Reset Copy Button
             resetCopyButton();
@@ -1761,7 +1771,6 @@
             });
         }
 
-        // RESET INTERFACE
         function resetView() {
             activeDrugId = null;
             emptyState.classList.remove("hidden");
@@ -1770,6 +1779,11 @@
             searchInput.value = "";
             clearBtn.classList.add("hidden");
             hideSuggestions();
+
+            // Reset warning notice
+            const warningEl = document.getElementById("display-dosage-warning");
+            warningEl.textContent = "NO SAFE OR SAFE-USE DOSE EXISTS FOR THIS SUBSTANCE.";
+            warningEl.className = "text-danger-500/80";
 
             // Unhighlight all chips
             const chips = popularContainer.querySelectorAll("button");
