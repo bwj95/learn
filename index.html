@@ -96,6 +96,33 @@
                 box-shadow: 0 0 15px rgba(229, 26, 26, 0.15);
             }
         }
+
+        /* Green theme override for Cannabis */
+        .theme-green .text-danger-500 {
+            color: #22c55e !important;
+        }
+        .theme-green .text-danger-400 {
+            color: #4ade80 !important;
+        }
+        .theme-green .bg-danger-950\/80 {
+            background-color: rgba(5, 46, 22, 0.8) !important;
+        }
+        .theme-green .border-danger-800\/60 {
+            border-color: rgba(20, 83, 45, 0.6) !important;
+        }
+        .theme-green-pulse {
+            animation: greenPulse 3s infinite alternate !important;
+        }
+        @keyframes greenPulse {
+            0% {
+                border-color: #064e3b;
+                box-shadow: 0 0 5px rgba(34, 197, 94, 0.05);
+            }
+            100% {
+                border-color: #047857;
+                box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+            }
+        }
     </style>
 </head>
 <body class="min-h-full flex flex-col justify-between selection:bg-danger-900 selection:text-danger-300">
@@ -478,11 +505,12 @@
                 category: "Cannabinoid",
                 streetNames: "Marijuana, Weed, Pot, Grass, Bud, Herb, Ganja, Mary Jane, Dope",
                 harms: [
-                    "Your brain's development is permanently stunted, causing long-term memory and learning deficits.",
-                    "Your lungs and bronchial tubes get chronically inflamed and damaged, causing chronic bronchitis.",
-                    "Your mental health is severely impacted, doubling your risk of developing chronic psychotic disorders like schizophrenia.",
-                    "Your attention span, focus, and overall cognitive processing speed are permanently slowed.",
-                    "Your heart rate is chronically elevated, increasing the long-term risk of cardiovascular disease."
+                    "CLINICAL RESEARCH SUMMARY: Utilized in oncology as a palliative support to manage chemotherapy-induced nausea, stimulate appetite, and alleviate chronic pain. Currently, there is no clinical evidence showing that cannabis or its compounds can cure or treat cancer itself.",
+                    "Your brain's cognitive development can be permanently disrupted if used heavily during youth, leading to long-term memory and learning deficits.",
+                    "Your respiratory system is damaged by chronic smoking, causing permanent bronchial inflammation, chronic cough, and lung lining irritation.",
+                    "Your mental health baseline is altered, doubling the statistical risk of triggering chronic psychotic disorders (like schizophrenia) in vulnerable individuals.",
+                    "Your cognitive performance, focus, and verbal memory can be chronically slowed down by persistent heavy usage.",
+                    "Your body can develop a cyclical vomiting disorder (Cannabinoid Hyperemesis Syndrome) causing severe, intractable nausea and abdominal pain."
                 ]
             },
             {
@@ -1503,7 +1531,7 @@
 
         // POPULAR SELECTION DRUGS (Capsules displayed in left sidebar)
         const POPULAR_IDS = [
-            "fentanyl", "heroin", "cocaine", "methamphetamine", "mdma", 
+            "fentanyl", "heroin", "cocaine", "methamphetamine", "mdma", "cannabis",
             "alprazolam", "dextroamphetamine", "alcohol", "testosterone-abuse", 
             "tianeptine", "dph", "nitrous-oxide", "ketamine", "inhalants"
         ];
@@ -1706,7 +1734,14 @@
             // Toggle Visibility
             emptyState.classList.add("hidden");
             profileContent.classList.remove("hidden");
-            profileDisplayCard.classList.add("pulse-warning");
+            
+            if (id === "cannabis") {
+                profileDisplayCard.classList.add("theme-green-pulse", "theme-green");
+                profileDisplayCard.classList.remove("pulse-warning");
+            } else {
+                profileDisplayCard.classList.add("pulse-warning");
+                profileDisplayCard.classList.remove("theme-green-pulse", "theme-green");
+            }
             
             // Reset Copy Button
             resetCopyButton();
@@ -1715,7 +1750,11 @@
             const chips = popularContainer.querySelectorAll("button");
             chips.forEach(chip => {
                 if (chip.getAttribute("data-id") === id) {
-                    chip.className = "py-1.5 px-3 bg-danger-950 border border-danger-700 text-danger-300 text-xs font-mono rounded transition-all glow-red select-none";
+                    if (id === "cannabis") {
+                        chip.className = "py-1.5 px-3 bg-green-950 border border-green-700 text-green-300 text-xs font-mono rounded transition-all shadow-[0_0_15px_rgba(34,197,94,0.1)] select-none";
+                    } else {
+                        chip.className = "py-1.5 px-3 bg-danger-950 border border-danger-700 text-danger-300 text-xs font-mono rounded transition-all glow-red select-none";
+                    }
                 } else {
                     chip.className = "py-1.5 px-3 bg-clinical-950 border border-clinical-800 text-clinical-400 hover:text-white hover:border-clinical-600 text-xs font-mono rounded transition-all select-none";
                 }
@@ -1727,7 +1766,7 @@
             activeDrugId = null;
             emptyState.classList.remove("hidden");
             profileContent.classList.add("hidden");
-            profileDisplayCard.classList.remove("pulse-warning");
+            profileDisplayCard.classList.remove("pulse-warning", "theme-green-pulse", "theme-green");
             searchInput.value = "";
             clearBtn.classList.add("hidden");
             hideSuggestions();
