@@ -1540,6 +1540,71 @@
                     "Your physical coordination is degraded long-term, increasing the risk of serious daytime falls and accidents.",
                     "Your cognitive clarity is permanently degraded, leading to chronic brain fog and learning difficulties."
                 ]
+            },
+            {
+                id: "acetaminophen",
+                name: "Acetaminophen",
+                category: "OTC Analgesic / Antipyretic",
+                streetNames: "Tylenol, Paracetamol, APAP, Mapap, Acet",
+                harms: [
+                    "Your liver cells die off rapidly during overdose or heavy chronic use, leading to acute liver failure, jaundice, and potential death or the need for a transplant.",
+                    "Your kidneys suffer toxic filtration damage from prolonged high dosage, causing chronic kidney disease and renal tissue scarring.",
+                    "Your skin can develop rare, life-threatening allergic reactions (like Stevens-Johnson Syndrome) where the outer layer of skin blisters and sheds.",
+                    "Your digestive system can experience chronic nausea and abdominal pain as sub-toxic levels accumulate in your blood.",
+                    "Your blood's ability to filter metabolic waste is compromised, poisoning your organs due to silent, chronic liver impairment."
+                ]
+            },
+            {
+                id: "ibuprofen",
+                name: "Ibuprofen",
+                category: "NSAID",
+                streetNames: "Advil, Motrin, Nurofen, IBU, Brufen",
+                harms: [
+                    "Your gastrointestinal tract develops painful ulcers and microscopic bleeding, potentially leading to sudden, severe internal hemorrhaging.",
+                    "Your kidneys are slowly poisoned by restricted blood circulation, causing chronic interstitial nephritis and fluid retention.",
+                    "Your heart is subjected to increased strain, raising your statistical risk of heart failure, stroke, and cardiovascular events.",
+                    "Your blood's clotting ability is impaired, increasing your risk of prolonged bleeding and easy bruising.",
+                    "Your inner ear can suffer toxic irritation, leading to chronic ringing in the ears (tinnitus) and gradual hearing loss."
+                ]
+            },
+            {
+                id: "naproxen",
+                name: "Naproxen",
+                category: "NSAID",
+                streetNames: "Aleve, Naprosyn, Anaprox, Naprelan",
+                harms: [
+                    "Your stomach and intestinal lining are eaten away by acid, causing chronic bleeding ulcers, severe abdominal pain, and life-threatening gastrointestinal perforation.",
+                    "Your kidney function is choked off as blood flow to the renal arteries is restricted, leading to chronic fluid retention, high blood pressure, and kidney failure.",
+                    "Your cardiovascular system faces a permanently elevated risk of sudden heart attack or stroke, even with short-term use.",
+                    "Your blood pressure rises chronically, putting immense, destructive pressure on your heart and cerebral arteries.",
+                    "Your liver can experience toxic drug-induced inflammation, resulting in chronic enzyme elevation and liver damage."
+                ]
+            },
+            {
+                id: "aspirin",
+                name: "Aspirin",
+                category: "NSAID / Antiplatelet",
+                streetNames: "Bayer, Acetylsalicylic Acid, ASA, Ecotrin, Bufferin",
+                harms: [
+                    "Your stomach lining suffers direct chemical burns and systemic prostaglandin depletion, leading to severe ulcers and gastric bleeding.",
+                    "Your blood's clotting mechanism is permanently deactivated for the lifespan of your platelets, leaving you vulnerable to internal bleeding and hemorrhagic stroke.",
+                    "Your brain can suffer toxic overload (salicylism), causing chronic tinnitus, severe headaches, confusion, and cognitive disruption.",
+                    "Your respiratory center is over-stimulated in chronic high doses, disrupting your blood's acid-base balance and causing metabolic acidosis.",
+                    "Your kidneys suffer long-term damage, leading to chronic renal papillary necrosis and functional decline."
+                ]
+            },
+            {
+                id: "caffeine",
+                name: "Caffeine",
+                category: "CNS Stimulant",
+                streetNames: "Coffee, Espresso, Vivarin, NoDoz, Energy Drinks, CAF",
+                harms: [
+                    "Your central nervous system becomes chronically over-stimulated, causing severe sleep architectural disruption, persistent insomnia, and chronic exhaustion.",
+                    "Your adrenal glands are overworked, leading to chronic fatigue, severe anxiety, panic attacks, and emotional instability.",
+                    "Your heart muscle is constantly overworked, leading to chronic arrhythmias (like premature ventricular contractions), palpitations, and high blood pressure.",
+                    "Your digestive system is irritated by high acidity and motility stimulation, causing chronic acid reflux, gastritis, and irritable bowel symptoms.",
+                    "Your body develops physical dependency, triggering severe withdrawal headaches, cognitive fog, depression, and tremors when you try to stop."
+                ]
             }
         ];
 
@@ -1547,7 +1612,8 @@
         const POPULAR_IDS = [
             "fentanyl", "heroin", "cocaine", "methamphetamine", "mdma", "cannabis",
             "alprazolam", "dextroamphetamine", "alcohol", "testosterone-abuse", 
-            "tianeptine", "dph", "nitrous-oxide", "ketamine", "inhalants"
+            "tianeptine", "dph", "nitrous-oxide", "ketamine", "inhalants",
+            "acetaminophen", "ibuprofen"
         ];
 
         // STATE VARIABLES
